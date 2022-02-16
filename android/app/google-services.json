@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "648463446070",
+    "project_id": "testing-chat-app-9563b",
+    "storage_bucket": "testing-chat-app-9563b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648463446070:android:abae29c26f848c8571e897",
+        "android_client_info": {
+          "package_name": "com.farroos.chat_app_testing_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648463446070-dmpga7iuk0n31jv47j1qvdhu4a5eq2o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgRIpLJ_NgpIQjK9K8uomd2cCzd7Krc8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648463446070-dmpga7iuk0n31jv47j1qvdhu4a5eq2o8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

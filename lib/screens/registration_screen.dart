@@ -1,6 +1,11 @@
+import 'package:chat_app_testing_project/screens/chat_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class RegistrationScreen extends StatefulWidget {
+  static const String id = "REGISTRATION_SCREEN";
+
   const RegistrationScreen({Key? key}) : super(key: key);
 
   @override
@@ -8,6 +13,10 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +35,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 48.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
+              style: const TextStyle(color: Colors.black),
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                // for user input
+                email = value;
               },
               decoration: const InputDecoration(
                 hintText: 'Enter your email',
+                hintStyle: TextStyle(color: Colors.grey),
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 border: OutlineInputBorder(
@@ -50,24 +63,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 8.0,
             ),
             TextField(
+              obscureText: true,
+              style: const TextStyle(color: Colors.black),
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                // user input
+                password = value;
               },
               decoration: const InputDecoration(
                 hintText: 'Enter your password',
+                hintStyle: TextStyle(color: Colors.grey),
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(32)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                  borderSide:
+                      BorderSide(color: Colors.lightBlueAccent, width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
                 focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                  borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
               ),
             ),
             const SizedBox(
@@ -80,8 +98,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   borderRadius: BorderRadius.circular(30),
                   elevation: 5,
                   child: MaterialButton(
-                    onPressed: () {
-                      // function
+                    onPressed: () async {
+                      try {
+                        var newUser =
+                            await _auth.createUserWithEmailAndPassword(
+                                email: email, password: password);
+                        Navigator.pushNamed(context, ChatScreen.id);
+                      } catch (e) {
+                        print(e);
+                      }
                     },
                     minWidth: 200.0,
                     height: 42.0,
