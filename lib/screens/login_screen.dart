@@ -1,3 +1,5 @@
+import 'package:chat_app_testing_project/screens/chat_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -10,6 +12,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 48.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
+              style: const TextStyle(color: Colors.black),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 // for user input
               },
@@ -56,6 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 8.0,
             ),
             TextField(
+              obscureText: true,
+              style: const TextStyle(color: Colors.black),
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 // for user input
               },
@@ -92,8 +104,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(30.0),
                 elevation: 5.0,
                 child: MaterialButton(
-                  onPressed: () {
-                    // for login
+                  onPressed: () async {
+                    try{
+                      var newUser = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    } catch(e){
+                      print(e);
+                    }
                   },
                   minWidth: 200.0,
                   height: 42.0,
