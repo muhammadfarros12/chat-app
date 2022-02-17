@@ -1,16 +1,25 @@
-# chat_app_testing_project
+# chat_app  
 
-A new Flutter project.
+## Log Pengembangan  
+menggunakan FLutter 2.5.3  
 
-## Getting Started
+### 1. UI Chat
+membuat layout awal.   
 
-This project is a starting point for a Flutter application.
+### 2. Running 1
+1. menambahkan beberapa resource berikut didalam project  
+- [Firebase Auth](https://pub.dev/packages/firebase_auth/install)  
+- [Firebase core](https://pub.dev/packages/firebase_core/install)  
+- [Cloud Firestore](https://pub.dev/packages/cloud_firestore/install)   
 
-A few resources to get you started if this is your first Flutter project:
+ dengan perintah flutter pub add (plugin).  
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+2. menambahkan beberapa dependencies android didalam project
+(lihat materi buku untuk lebih jelas).  
+3. kaitkan project dengan firebase.  
+4. hingga register berhasil dilakukan didalam aplikasi dengan output didalam console  
 
+#### credit:  
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
