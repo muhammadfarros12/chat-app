@@ -1,7 +1,8 @@
 # chat_app  
 
 ## Log Pengembangan  
-menggunakan FLutter 2.5.3  
+menggunakan Flutter 2.5.3  
+update aplikasi akan dilampirkan disini.
 
 ### 1. UI Chat
 membuat layout awal.   
@@ -18,6 +19,11 @@ membuat layout awal.
 (lihat materi buku untuk lebih jelas).  
 3. kaitkan project dengan firebase.  
 4. hingga register berhasil dilakukan didalam aplikasi dengan output didalam console  
+
+### 3. Running 2  
+update aplikasi:  
+1. menambahkan fitur chat didalam aplikasi yang disimpan menggunakan firebase firestore dan bisa melakukan login langsung.  
+2. agar tersimpan apa yang kita tuliskan didalam firebase firestore kita harus menambahkan permission didalam firestore, silahkan buka link [berikut](https://firebase.google.com/docs/firestore/security/get-started#auth-required) untuk pemberian permissionnya.  
 
 #### credit:  
 For help getting started with Flutter, view our
