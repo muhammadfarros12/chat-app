@@ -100,7 +100,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   child: MaterialButton(
                     onPressed: () async {
                       try {
-                        var newUser =
                             await _auth.createUserWithEmailAndPassword(
                                 email: email, password: password);
                         Navigator.pushNamed(context, ChatScreen.id);

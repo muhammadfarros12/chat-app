@@ -25,6 +25,12 @@ update aplikasi:
 1. menambahkan fitur chat didalam aplikasi yang disimpan menggunakan firebase firestore dan bisa melakukan login langsung.  
 2. agar tersimpan apa yang kita tuliskan didalam firebase firestore kita harus menambahkan permission didalam firestore, silahkan buka link [berikut](https://firebase.google.com/docs/firestore/security/get-started#auth-required) untuk pemberian permissionnya.  
 
+### 4. Running 3
+update aplikasi:
+1. memperbaiki masalah login pada running 2.
+2. menambahkan fitur chat didalam aplikasi menggunakan cloud firestore.
+3. menampilkan hasil chat yang ada.
+
 #### credit:  
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,

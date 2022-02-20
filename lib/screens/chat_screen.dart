@@ -3,6 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+late User loggedInUser;
+
+final _firestore = FirebaseFirestore.instance;
+
 class ChatScreen extends StatefulWidget {
   static const String id = "CHAT_SCREEN";
 
@@ -14,12 +18,10 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
-  late User loggedInUser;
 
-  final _firestore = FirebaseFirestore.instance;
   late String messageText;
 
-  void getCurrentUser() async {
+  void getCurrentUser() {
     try {
       final user = _auth.currentUser!;
       loggedInUser = user;
@@ -53,6 +55,7 @@ class _ChatScreenState extends State<ChatScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          const MessageStream(),
           Container(
             decoration: kMessageContainerDecoration,
             child: Row(
@@ -69,8 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 TextButton(
                   onPressed: () {
                     _firestore.collection('messages').add(
-                        {'sender': loggedInUser.email, 'text': messageText}
-                    );
+                        {'sender': loggedInUser.email, 'text': messageText});
                   },
                   child: const Text(
                     'send',
@@ -82,6 +84,40 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       )),
+    );
+  }
+}
+
+class MessageStream extends StatelessWidget {
+  const MessageStream({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore.collection('messages').snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.lightBlue,
+            ),
+          );
+        }
+
+        final messages = snapshot.data!.docs;
+        List<Text> messageWidgets = [];
+        for (var message in messages) {
+          final messageText = message['text'];
+          final messageSender = message['sender'];
+
+          final messageWidget = Text('$messageText from $messageSender');
+          messageWidgets.add(messageWidget);
+        }
+        return Expanded(
+            child: ListView(
+          children: messageWidgets,
+        ));
+      },
     );
   }
 }

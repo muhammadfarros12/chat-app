@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: const TextStyle(color: Colors.black),
               textAlign: TextAlign.center,
               onChanged: (value) {
-                // for user input
+                email = value;
               },
               decoration: const InputDecoration(
                 hintText: 'Enter your email...',
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: const TextStyle(color: Colors.black),
               textAlign: TextAlign.center,
               onChanged: (value) {
-                // for user input
+                password = value;
               },
               decoration: const InputDecoration(
                 hintText: 'Enter your password...',
@@ -105,10 +105,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () async {
-                    try{
-                      var newUser = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                    try {
+                      await _auth.signInWithEmailAndPassword(
+                          email: email, password: password);
                       Navigator.pushNamed(context, ChatScreen.id);
-                    } catch(e){
+                    } catch (e) {
                       print(e);
                     }
                   },
