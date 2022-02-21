@@ -40,6 +40,10 @@ update aplikasi:
 3. Running 5 : memperbaiki tampilan pada Running 4.  
 4. menambahkan controller pada text field dan text button yg digunakan ketika input text.  
 
+### 6. Running 6 (bonus)
+update aplikasi:
+1. Logout.
+2. mengubah icon untuk icon chat.
 #### credit:  
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
