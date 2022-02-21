@@ -31,6 +31,15 @@ update aplikasi:
 2. menambahkan fitur chat didalam aplikasi menggunakan cloud firestore.
 3. menampilkan hasil chat yang ada.
 
+### 5. Running 4 & 5  
+update aplikasi:  
+1. Running 4 : menampilkan hasil chat didalam aplikasi.  
+2. menambahkan field time untuk menampilkan chat sesuai dengan waktu yang ada.  
+   dan sebelum menambahkannya diharuskan untuk melakukan import plugin resource berikut.  
+   [intl](https://pub.dev/packages/intl/install)  
+3. Running 5 : memperbaiki tampilan pada Running 4.  
+4. menambahkan controller pada text field dan text button yg digunakan ketika input text.  
+
 #### credit:  
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
