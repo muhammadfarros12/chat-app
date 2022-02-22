@@ -16,9 +16,31 @@ membuat layout awal.
  dengan perintah flutter pub add (plugin).  
 
 2. menambahkan beberapa dependencies android didalam project
-(lihat materi buku untuk lebih jelas).  
-3. kaitkan project dengan firebase.  
-4. hingga register berhasil dilakukan didalam aplikasi dengan output didalam console  
+ (lihat materi buku untuk lebih jelas).  
+3. kaitkan project dengan firebase (menambahkan asyncronous di file ```main.dart```)
+  ``` dart
+  void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
+
+  ```  
+4. menambahkan code berikut di `build.gradle` app level
+  ``` dart
+  defaultConfig {
+    ...
+    minSdkVersion 19
+    multiDexEnabled true
+    ...
+  }
+  dependencies {
+    ...
+    implementation 'com.android.support:multidex:1.0.3'
+}
+  ```
+  
+5. hingga register berhasil dilakukan didalam aplikasi dengan output didalam console  
 
 ### 3. Running 2  
 update aplikasi:  
